@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { FabricJSCanvas, useFabricJSEditor } from "fabricjs-react";
+import "./App.css";
 
-function App() {
+export default function App() {
+  const { editor, onReady } = useFabricJSEditor();
+  const onAddCircle = () => {
+    editor.addCircle();
+  };
+  const onAddRectangle = () => {
+    editor.addRectangle();
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Lineup React Sample Project</h1>
+      <button onClick={onAddCircle}>Add circle</button>
+      <button onClick={onAddRectangle}>Add Rectangle</button>
+      <FabricJSCanvas className="sample-canvas" onReady={onReady} />
     </div>
   );
 }
-
-export default App;
